@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+
+	<!-- Appender for Customer service -->
+
+	<appender name="CustomerService" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="d:/logs/customerservice.log" />
+		<param name="datePattern" value=".yyyy-MM-dd" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5p]:%c{1}: %t - %m%n" />
+			
+		</layout>
+	</appender>
+	
+	
+
+
+	<!-- Application logs appenders Injection -->
+	<logger name="com.hcl.spring.boot.training">
+		<level value="debug" />
+		<appender-ref ref="CustomerService" />
+	</logger>
+	
+	
+
+	
+
+</log4j:configuration>
